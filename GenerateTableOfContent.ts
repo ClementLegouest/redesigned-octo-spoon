@@ -14,22 +14,30 @@ const SHEET_TO_AVOID_IN_SUMMARY = ["summary"];
 const CELL_TO_START_SUMMARY = [0, 0];
 const CELL_LINK_TO_SUMMARY = [0, 1]
 const HOME_ICON = "🏠"
+const BLUE = "0000FF";
+const FONT_SIZE = 24;
 
 function main(workbook: ExcelScript.Workbook) {
 
-    let summarySheet: ExcelScript.Worksheet = workbook.getWorksheet(SUMMARY_SHEET_NAME);
-    let currentCell = summarySheet.getCell(CELL_TO_START_SUMMARY[0], CELL_TO_START_SUMMARY[1]);
+  let summarySheet: ExcelScript.Worksheet = workbook.getWorksheet(SUMMARY_SHEET_NAME);
+  let currentCell = summarySheet.getCell(CELL_TO_START_SUMMARY[0], CELL_TO_START_SUMMARY[1]);
 
-    workbook.getWorksheets().forEach( (worksheet) => {
-        if(!SHEET_TO_AVOID_IN_SUMMARY.includes(worksheet.getName())) {
-            worksheet
-                .getCell(CELL_LINK_TO_SUMMARY[0], CELL_LINK_TO_SUMMARY[1])
-                .setFormulaLocal(hyperLinkToTab("summary", HOME_ICON))
-            currentCell.setFormulaLocal(hyperLinkToTab(worksheet.getName()));
+  workbook.getWorksheets().forEach((worksheet) => {
+    if (!SHEET_TO_AVOID_IN_SUMMARY.includes(worksheet.getName())) {
 
-            currentCell = currentCell.getRowsBelow();
-        }
-    });
+      let homeLinkCell = worksheet.getCell(CELL_LINK_TO_SUMMARY[0], CELL_LINK_TO_SUMMARY[1]);
+      homeLinkCell.setFormulaLocal(hyperLinkToTab(SUMMARY_SHEET_NAME, HOME_ICON));
+      const homeLinkFont = homeLinkCell.getFormat().getFont();
+      homeLinkFont.setSize(FONT_SIZE);
+
+      currentCell.setFormulaLocal(hyperLinkToTab(worksheet.getName()));
+      const cellFont = currentCell.getFormat().getFont();
+      cellFont.setSize(FONT_SIZE);
+      cellFont.setColor(BLUE);
+
+      currentCell = currentCell.getRowsBelow();
+    }
+  });
 }
 
 /**
