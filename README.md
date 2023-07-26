@@ -4,5 +4,5 @@ In this repository I'll be sharing some useful ExcelScript, at least that I find
 
 | Script  | fonctionnalité|
 | :--------------- | :--------------- |
-| [GenerateTableOfContents](https://github.com/ClementLegouest/redesigned-octo-spoon/blob/main/sheetNames.ts) | Génère un sommaire de toutes vos feuilles dans la feuille de votre choix commencant à la cellule de votre choix |
-| [SheetNames](https://github.com/ClementLegouest/redesigned-octo-spoon/blob/main/sheetNames.ts) | Itère toutes les feuilles et inscrit le nom de la feuille dans la/les cellules de votre choix |
+| [GenerateTableOfContents](https://github.com/ClementLegouest/redesigned-octo-spoon/blob/main/sheetNames.ts) | Generates a table of contents of all your sheets in the sheet you want starting at the cell you want |
+| [SheetNames](https://github.com/ClementLegouest/redesigned-octo-spoon/blob/main/sheetNames.ts) | Iterates through all your sheets and write the sheet's name inside the choosen cell(s) |
