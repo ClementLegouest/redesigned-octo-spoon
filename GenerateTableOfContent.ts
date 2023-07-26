@@ -5,7 +5,6 @@
 **
 **  This script will generate a list of all the sheets in the file in the SUMMARY_SHEET_NAME starting at the CELL_TO_START_SUMMARY
 **  Every sheet designated in the SHEET_TO_AVOID_IN_SUMMARY will be avoided
-**  // TODO : Add a link to the sheet
 **
 */
 
